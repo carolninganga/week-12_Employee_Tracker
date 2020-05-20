@@ -56,5 +56,5 @@ npm test
 
 ## Questions
 
-If you have any questions about the repo, open an issue or contact [carolninganga@gmail.com] directly at carolninganga@gmail.com.
+If you have any questions about the repo, open an issue or contact [carolninganga@gmail.com].
 
