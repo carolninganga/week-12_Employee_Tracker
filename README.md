@@ -53,8 +53,9 @@ To run tests, run the following command:
 ```
 npm test
 ```
+## Project URL : https://carolninganga.github.io/week-12_Employee_Tracker/
 
-## Questions
+## Question
 
 If you have any questions about the repo, open an issue or contact [carolninganga@gmail.com].
 
