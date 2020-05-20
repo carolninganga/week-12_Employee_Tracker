@@ -52,19 +52,19 @@ connection.connect(function(err) {
           departmentView();
           break;
 
-        case viewOptions[3]:
+        case viewOptions[2]:
           roleView();
           break;
 
-        case UpdateOptions[4]:
+        case viewOptions[3]:
           UpdateEmployee();
           
       }
     })
   }
 function employeeView() {
-  var query = "SELECT first_name, last_name, tile, salary FROM employee ";
-  query += "LEFT JOIN role";
+  var query = "SELECT first_name, last_name, title, salary FROM employee ";
+  query += "LEFT JOIN role ";
   query += "ON employee.role_id = role.id"
   connection.query(query, function (err, result) {
     if (err) throw err;
@@ -82,14 +82,16 @@ function departmentView() {
 };
 
 function roleView() {
+  console.log("carol")
   var query = "SELECT * from role";
   connection.query(query, function(err, result){
-    console.table("View Roles :" + result);
+    console.table(result);
     start();
   });
 };
 
 function UpdateEmployee() {
+  console.log("caroline");
   connection.query("SELECT * FROM role", function(err, result) {
 
     inquirer
@@ -110,7 +112,7 @@ function UpdateEmployee() {
         choices: function() {
           var arr = [];
           for(var i = 0; i < result.length; i++) {
-            arr.push(res[i].title);
+            arr.push(result[i].title);
           }
           return arr;
         },
@@ -130,12 +132,15 @@ function UpdateEmployee() {
           "INSERT INTO employee SET ?", {
             first_name: answer.first_name,
             last_name: answer.last_name,
-            role_id: answer.employeeRoleID,
+            role_id: employeeRoleID,
+          },function(err, result){
+            exitApp();
           })
       });
   });
 };
   function exitApp(){
+    console.log("exiting app");
     connection.end();
   }
 
